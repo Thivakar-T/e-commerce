@@ -7,11 +7,19 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { MaterialsModule } from 'src/materials/materials.module';
-
+import { TableComponent } from './table/table.component';
+import { MaterialsModule } from './materials/materials.module';
+import { CustomersComponent } from './customers/customers.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SeccomponentComponent } from './seccomponent/seccomponent.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableComponent,
+    CustomersComponent,
+    AddCustomerComponent,
+    SeccomponentComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +28,8 @@ import { MaterialsModule } from 'src/materials/materials.module';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    MaterialsModule
+    MaterialsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
