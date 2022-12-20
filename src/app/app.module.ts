@@ -1,6 +1,6 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -19,7 +19,8 @@ import { SeccomponentComponent } from './seccomponent/seccomponent.component';
     TableComponent,
     CustomersComponent,
     AddCustomerComponent,
-    SeccomponentComponent
+    SeccomponentComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import { SeccomponentComponent } from './seccomponent/seccomponent.component';
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     MaterialsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
