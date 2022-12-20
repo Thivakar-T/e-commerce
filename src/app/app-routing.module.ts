@@ -5,11 +5,17 @@ import { CustomersComponent } from './customers/customers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { SeccomponentComponent } from './seccomponent/seccomponent.component';
 
+
 const routes: Routes = [
-  {path:'',component:TableComponent},
+  {
+    path: '',
+    loadChildren: () => import('./../auth/auth.module').then(m => m.AuthModule)
+  },
+ 
+  {path:'Table',component:TableComponent},
   {path:'Customer',component:CustomersComponent},
   {path:'Add-Customer',component:AddCustomerComponent},
-  {path:'sec',component:SeccomponentComponent}
+  {path:'sec',component:SeccomponentComponent},
 ];
 
 @NgModule({
