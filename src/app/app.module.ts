@@ -8,12 +8,16 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { MaterialsModule } from 'src/materials/materials.module';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitComponent } from './unit/unit.component';
 import { ItemsComponent } from './items/items.component';
 import { AccountRoutingModule } from './account/account-routing.module';
 import { AccountModule } from './account/account.module';
+import { TableComponent } from './table/table.component';
+import { MaterialsModule } from './materials/materials.module';
+import { CustomersComponent } from './customers/customers.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { SeccomponentComponent } from './seccomponent/seccomponent.component';
 
 
 @NgModule({
@@ -22,6 +26,13 @@ import { AccountModule } from './account/account.module';
     UnitComponent,
     ItemsComponent,
    
+
+
+    AppComponent,
+    TableComponent,
+    CustomersComponent,
+    AddCustomerComponent,
+    SeccomponentComponent
   ],
   imports: [
     BrowserModule,
