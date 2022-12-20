@@ -13,7 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitComponent } from './unit/unit.component';
 import { ItemsComponent } from './items/items.component';
 import { AccountRoutingModule } from './account/account-routing.module';
-import { HeaderComponent } from 'src/layout/header/header.component';
+import { AccountModule } from './account/account.module';
 
 
 @NgModule({
@@ -21,7 +21,6 @@ import { HeaderComponent } from 'src/layout/header/header.component';
     AppComponent,
     UnitComponent,
     ItemsComponent,
-    HeaderComponent,
    
   ],
   imports: [
@@ -35,7 +34,7 @@ import { HeaderComponent } from 'src/layout/header/header.component';
     ReactiveFormsModule,
     FormsModule,
     AccountRoutingModule,
-    
+    AccountModule
     
 
     
