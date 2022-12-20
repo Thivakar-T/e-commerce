@@ -11,10 +11,17 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { MaterialsModule } from 'src/materials/materials.module';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitComponent } from './unit/unit.component';
+import { ItemsComponent } from './items/items.component';
+import { AccountRoutingModule } from './account/account-routing.module';
+import { HeaderComponent } from 'src/layout/header/header.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     UnitComponent,
+    ItemsComponent,
+    HeaderComponent,
    
   ],
   imports: [
@@ -26,7 +33,14 @@ import { UnitComponent } from './unit/unit.component';
     NgxSpinnerModule,
     MaterialsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AccountRoutingModule,
+    
+    
+
+    
+    
+
   
   ],
   providers: [],
