@@ -1,0 +1,259 @@
+<div class="body">
+    <nav class="navbar navbar-light ">
+        <span class="navbar-brand mb-0 h1 ms-3"><i class="fa fa-file-text fs-3" aria-hidden="true"></i> <span
+                class="ms-2"><b>New Invoice</b></span> </span>
+    </nav>
+    <hr>
+    <div class="container-fluid justify-content-center mt-3">
+        <div class="body1 shadow justify-content-md-center mx-2 mb-5  py-3 px-4 b headercard ">
+            <form>
+                <div class="row mt-3  mb-3 ">
+                    <div class="row mt-3 ">
+                        <div class="col-lg-8">
+
+                            <div class="row">
+                                <div class="col-lg-3 ">
+                                    <p class="mt-2 pt-0 ">Customer Name*</p>
+                                </div>
+
+                                <div class="col-lg-9 col-sm-12 d-flex">
+
+                                    <input type="search" class="form-control rounded" placeholder="Search"
+                                        aria-label="Search" aria-describedby="search-addon" />
+                                    <span class="input-group-text border-0 bg-primary" id="search-addon">
+                                        <i class="fas fa-search text-light"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p class="mt-2 pt-0 text-danger">Invoice#*</p>
+                                </div>
+                                <div class="col-lg-9 col-sm-12 ">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p class="mt-2 pt-0 text-danger">Order Number</p>
+                                </div>
+                                <div class="col-lg-9 col-sm-12 ">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p class="mt-2 pt-0 text-danger">Invoice Date*</p>
+                                </div>
+                                <div class="col-lg-9 col-sm-12 ">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-3">
+                    <div class="row mt-3 ">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3 ">
+                                    <p class="mt-2 pt-0 ">Subject<i class="fa fa-info-circle ms-2"
+                                            aria-hidden="true"></i></p>
+                                </div>
+                                <div class="col-lg-9 col-sm-12 d-flex">
+                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2"
+                                        cols="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-5">
+                    <div class="container ">
+                        <div class="row clearfix">
+                            <div>
+                                <table class="table table-responsive table-bordered table-hover ">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"> # </th>
+                                            <th class="text-center"> Product </th>
+                                            <th class="text-center"> Qty </th>
+                                            <th class="text-center"> Price </th>
+                                            <th class="text-center"> Total </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><input type="text" name='product[]' placeholder='Enter Product Name'
+                                                    class="form-control" />
+                                            </td>
+                                            <td><input type="number" name='qty[]' placeholder='Enter Qty'
+                                                    class="form-control qty" step="0" min="0" /></td>
+                                            <td><input type="number" name='price[]' placeholder='Enter Unit Price'
+                                                    class="form-control price" step="0.00" min="0" /></td>
+                                            <td><input type="number" name='total[]' placeholder='0.00'
+                                                    class="form-control total" readonly /></td>
+                                        </tr>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <button id="add_row" class="btn btn-default pull-left">Add Row</button>
+                                <button id='delete_row' class="pull-right btn btn-default">Delete Row</button>
+                            </div>
+                        </div>
+                        <div class="row clearfix" style="margin-top:20px">
+                            <div class="pull-right col-md-6 col-xl-6 col-lg-6 ">
+                                <table class="table table-bordered table-hover" id="tab_logic_total">
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">Sub Total</th>
+                                            <td class="text-center"><input type="number" name='sub_total'
+                                                    placeholder='0.00' class="form-control" id="sub_total" readonly />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">CGST</th>
+                                            <td class="text-center">
+                                                <div class="input-group mb-2 mb-sm-0">
+                                                    <input type="number" class="form-control" id="tax1" placeholder="0">
+                                                    <div class="input-group-addon">%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">CGST Tax Amount</th>
+                                            <td class="text-center"><input type="number" name='tax_amount'
+                                                    id="tax_amount" placeholder='0.00' class="form-control" readonly />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Grand Total</th>
+                                            <td class="text-center"><input type="number" name='total_amount'
+                                                    id="total_amount" placeholder='0.00' class="form-control"
+                                                    readonly /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                                <div class="form ms-4 mt-5 w-75 ">
+                                    <div class="form-group mt-5">
+                                        <label class="mt-5" for="exampleFormControlTextarea1">Customer
+                                            Notes</label>
+                                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1"
+                                            rows="2" cols="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-3">
+                    <div class="row mt-3 ms-0">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3 ">
+                                    <p class="mt-2 pt-0 ">Terms & Conditions<i class="fa fa-info-circle ms-2"
+                                            aria-hidden="true"></i></p>
+                                </div>
+                                <div class="col-lg-9 col-sm-12 d-flex">
+                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2"
+                                        cols="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="line mt-3 p-0">
+                    <div class="fill-container txn-bottom-form bg-light ">
+                        <div class="zb-txn-form">
+                            <div class="row seperator-col">
+                                <div class="col-lg-8 coll">
+                                    <div class="form-group">
+                                        <div class="mb-2 mt-2">Terms &amp; Conditions</div>
+                                        <div><textarea rows="4"
+                                                placeholder="Enter the terms and conditions of your business to be displayed in your transaction"
+                                                id="ember195"
+                                                class="ember-text-area ember-view form-control"></textarea>
+                                            <div class="form-check form-check-inline d-none"><input id="a99898659"
+                                                    class="ember-checkbox ember-view form-check-input" type="checkbox">
+                                                <label for="a99898659" class="form-check-label"><span
+                                                        class="hightlight">Use this in future for all invoices of all
+                                                        customers.</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 coll">
+                                    <div id="ember196" class="form-group ember-view">
+                                        <p class="form-control-plaintext">
+                                        <div class="font-xs ms-3 mt-4">Attach File(s) to Invoice</div>
+                                        <div>
+                                            <div id="ember197" class="dropdown ember-view btn-group mt-2">
+                                                <span class="btn btn-attachment file-upload">
+                                                    <input multiple=""
+                                                        accept="image/gif,image/jpeg,image/png,image/bmp,application/pdf,application/doc, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/xml, text/csv, .xml, text/xml"
+                                                        id="ember198" class="upload ember-view" type="file">
+                                                </span>
+                                            </div>
+                                            <div class="mt-1">
+                                                <div>
+                                                    <div>
+                                                        <small class="text-muted ms-3">
+                                                            You can upload a maximum of 3 files, 5MB each
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex">
+                            <p class="mt-3">Want to get paid faster? </p><img class="img1 mt-2"
+                                src="../../assets/new_image-removebg-preview (1).png" alt="">
+                        </div>
+                        <div>
+                            <p class="text-secondary">Configure payment gateways and receive payments online.</p>
+                        </div>
+                        <div class="mb-3"> </div>
+                    </div>
+                    <hr>
+                </div>
+                <p><span><b>Additional Fields:</b></span> <span class="text-secondary"><i>Start adding custom fields
+                            foryour invoices by going to Settings<i class="fa fa-arrow-right ms-2"
+                                aria-hidden="true"></i></i></span><span class="text-secondary">Preferences <i
+                            class="fa fa-arrow-right " aria-hidden="true"></i></span><span
+                        class="text-secondary">Invoices.</span> </p>
+                <div class="row mt-5 fixed-bottom bg-light">
+                    <div class="save col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3 mt-3">
+                        <button class="btn btn1 me-5 bg-light border-secondary text-dark fs-6 mx-1 text-dark "
+                            type="button"> Save as Draft
+                        </button>
+                        <button class="btn btn1 bg-success mt-2 text-white fs-6 me-5 mx-1 text-dark " type="button">
+                            Save and Send
+                        </button>
+                        <button class="btn btn2 last4 fs-6 me-5 mt-2 ms-1 bg-success text-white " type="button"> CANCEL
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
