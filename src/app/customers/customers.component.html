@@ -1,0 +1,230 @@
+<div class="container-fulid px-2 mt-0 pt-0">
+    <div class=" mx-3 mt-2">
+        <div class="row  mx-2 p-3 ">
+            <div class="col-lg-7 col-md-10 mx-0">
+                <h4 class="my-auto headcolr"> <b>New Customer</b></h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container justify-content-center mt-3">
+    <div class="shadow justify-content-md-center mx-2 mb-5  py-3 px-4 bg-body headercard ">
+        <form (ngSubmit)="onSubmit()" [formGroup]="studentForm">
+            <div class="row mt-3  mb-3 ">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label col-lg-3 pt-0"> <span class="underline"> Customer Type </span>
+                                </p>
+                                <div class="col-lg-9">
+                                    <div class="form-check form-check-inline">
+                                        <input name="contact-sub-type" class="form-check-input" type="radio"
+                                            value="business">Business
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="contact-sub-type" id="af405ee57" class="form-check-input"
+                                            type="radio" value="individual">Individual
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label col-lg-3 col-md-4 col-sm-6 pt-0"> <span
+                                        class="underline ">primary
+                                        contact</span></p>
+                                <div class="col-lg-9  col-md-8 col-sm-6 d-flex ">
+                                    <div class="form me-5">
+                                        <select required class="form-select form-control-xxl">
+                                            <option value="" disabled selected>Salutation</option>
+                                            <option value="Mr.">Mr.</option>
+                                            <option value="Mrs.">Mrs.</option>
+                                            <option value="Ms.">Ms.</option>
+                                            <option value="Miss.">Miss.</option>
+                                            <option value="Dr.">Dr.</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form me-5 ">
+                                        <input type="text" class="form-control" formControlName="First Name"
+                                            placeholder="First Name" />
+                                    </div>
+                                    <div class="form me-5 ">
+                                        <input type="text" class="form-control" formControlName="last Name"
+                                            placeholder="Last Name" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Company Name</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5  w-75">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label col-lg-3 pt-0"> <span class="underline text-danger">Customer
+                                        Display Name *</span></p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5  w-75">
+                                        <select required class="form-select select w-100">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Customer Email</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5  w-75">
+                                        <input type="email" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Customer phone</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5">
+                                        <input type="text" class="form-control" placeholder="Work phone" />
+                                    </div>
+                                    <div class="form me-5">
+                                        <input type="text" class="form-control " placeholder="Mobile" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Skype Name/Number</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="input-icon-wrap me-5 ">
+                                        <span class="input-icon"><span class="bx bxl-skype Skype"></span></span>
+
+                                        <input id="ember277" class="ember-text-field text-left ember-view form-control "
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Designation</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5  w-75">
+                                        <input type="text" class="form-control" formControlName="Designation" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Department</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5  w-75">
+                                        <input type="text" class="form-control" formControlName="Department" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <p class="col-form-label mt-2 col-lg-3 pt-0">Website</p>
+                                <div class="col-lg-9  d-flex ">
+                                    <div class="form me-5  w-75">
+                                        <input type="text" class="form-control" formControlName="Website" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div>
+                <li id="nav">
+                    <a class="nav-link active  ms-2" aria-current="page">Other Detials</a>
+                </li>
+                <li id="nav">
+                    <a class="nav-link active  ms-2" aria-current="page">Address</a>
+                </li>
+                <li id="nav">
+                    <a class="nav-link active  ms-2" aria-current="page" routerLink="/sec">Contact Persons</a>
+                </li>
+                <li id="nav">
+                    <a class="nav-link active  ms-2" aria-current="page">Contact Fields</a>
+                </li>
+                <li id="nav">
+                    <a class="nav-link active  ms-2" aria-current="page"> Remarks</a>
+                </li>
+
+
+            </div>
+            <app-seccomponent></app-seccomponent>
+
+            <div class="row mt-5">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
+                    <button class="btn btn1 fs-6 mx-1 text-white " type="button"> SAVE
+                    </button>
+                    <button class="btn btn2 last4 fs-6  text-dark " type="button"> CANCEL
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
