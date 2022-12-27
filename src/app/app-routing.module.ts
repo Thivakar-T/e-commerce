@@ -9,7 +9,10 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { SeccomponentComponent } from './seccomponent/seccomponent.component';
 import { TabComponent } from './tab/tab.component';
 import { ItemstableComponent } from './itemstable/itemstable.component';
-
+import { ConfiguretermsComponent } from './configureterms/configureterms.component';
+import { HomeinvoiceComponent } from './homeinvoice/homeinvoice.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { ManagetcsComponent } from './managetcs/managetcs.component';
 
 const routes: Routes = [
   {path:"",component:HeaderComponent},
@@ -19,16 +22,15 @@ const routes: Routes = [
   {path:"tab",component:TabComponent},
   {path:"itemstable",component:ItemstableComponent},
   {path:"itemstable/:data",component:ItemstableComponent},
-
-
-
-  
-
   {path:'',component:TableComponent},
   {path:'Customer',component:CustomersComponent},
   {path:'Add-Customer',component:AddCustomerComponent},
-  {path:'sec',component:SeccomponentComponent}
-];
+  {path:'sec',component:SeccomponentComponent},
+  {path:'invoice',component:InvoiceComponent},
+  {path:'configureterms',component:ConfiguretermsComponent},
+  {path:'managetcs',component:ManagetcsComponent},
+  {path:'homeinvoice',component:HomeinvoiceComponent},
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

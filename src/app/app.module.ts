@@ -1,6 +1,5 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -10,18 +9,22 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitComponent } from './unit/unit.component';
 import { ItemsComponent } from './items/items.component';
-import { AccountRoutingModule } from './account/account-routing.module';
-import { AccountModule } from './account/account.module';
 import { TableComponent } from './table/table.component';
-import { MaterialsModule } from './materials/materials.module';
 import { CustomersComponent } from './customers/customers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { SeccomponentComponent } from './seccomponent/seccomponent.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TabComponent } from './tab/tab.component';
 import { ItemstableComponent } from './itemstable/itemstable.component';
-
-
+import { AccountRoutingModule } from './account/account-routing.module';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { ConfiguretermsComponent } from './configureterms/configureterms.component';
+import { ManagetcsComponent } from './managetcs/managetcs.component';
+import { HomeinvoiceComponent } from './homeinvoice/homeinvoice.component';
+import { MaterialsModule } from './materials/materials.module';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,10 @@ import { ItemstableComponent } from './itemstable/itemstable.component';
     SeccomponentComponent,
     TabComponent,
     ItemstableComponent,
+    InvoiceComponent,
+    ConfiguretermsComponent,
+    ManagetcsComponent,
+    HomeinvoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -43,13 +50,15 @@ import { ItemstableComponent } from './itemstable/itemstable.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    MaterialsModule,
-    ReactiveFormsModule,
-    FormsModule,
+    
     AccountRoutingModule,
-    AccountModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MaterialsModule,
+    FormsModule,
     HttpClientModule,
     
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
