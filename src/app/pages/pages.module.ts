@@ -9,9 +9,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from 'src/auth/interceptor/jwt.interceptor';
 import { MaterialsModule } from '../materials/materials.module';
-
+import { MaterialsRoutingModule } from '../materials/materials-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainComponent } from './main/main.component';
+import { ConfiguretermsComponent } from './configureterms/configureterms.component';
+import { HomeinvoiceComponent } from './homeinvoice/homeinvoice.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { ItemsComponent } from './items/items.component';
+import { ItemstableComponent } from './itemstable/itemstable.component';
+import { ManagetcsComponent } from './managetcs/managetcs.component';
+import { TabComponent } from './tab/tab.component';
+import { UnitComponent } from './unit/unit.component';
+import { LayoutModule } from 'src/layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +29,15 @@ import { MaterialsModule } from '../materials/materials.module';
     CustomersComponent,
     TableComponent,
     SeccomponentComponent,
-
+    MainComponent,
+    ConfiguretermsComponent,
+    HomeinvoiceComponent,
+    InvoiceComponent,
+    ItemsComponent,
+    ItemstableComponent,
+    ManagetcsComponent,
+    TabComponent,
+    UnitComponent
   ],
   imports: [
     CommonModule,
@@ -28,11 +46,11 @@ import { MaterialsModule } from '../materials/materials.module';
     NgxSpinnerModule,
     FormsModule,
     HttpClientModule,
-    MaterialsModule
-
+    MaterialsModule,
+    LayoutModule,
+    MaterialsRoutingModule,
+    BrowserAnimationsModule
   ],
-  providers:[
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
-  ]
+ 
 })
 export class PagesModule { }

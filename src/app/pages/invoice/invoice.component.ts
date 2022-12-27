@@ -45,8 +45,8 @@ export class InvoiceComponent implements OnInit {
 
     let Value = event.target.value;
 
-    Value === "Configure Terms" ? this.router.navigateByUrl('/configureterms')
-      : Value === "Manage TCS" ? this.router.navigateByUrl('/managetcs') : this.router.navigateByUrl('');
+    Value === "Configure Terms" ? this.router.navigateByUrl('/main/configureterms')
+      : Value === "Manage TCS" ? this.router.navigateByUrl('/main/managetcs') : this.router.navigateByUrl('');
   }
 
   calculateTotal(event: any, index: any) {

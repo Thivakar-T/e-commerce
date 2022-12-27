@@ -9,12 +9,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
-
-
   loginform!: FormGroup
   Submitted = false;
-
   constructor(private fb: FormBuilder, private service: LoginService, private router: Router, private toaster: ToastrService) {
   
   }
@@ -52,7 +48,6 @@ export class LoginComponent {
     },
       (error) => {
         console.log(error);
-
 
       }
     )
