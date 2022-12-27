@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1 ms-3 mb-2"><b>Manage TCS</b></span>
+</nav>
+<form [formGroup]="tcsform" style="overflow-x: hidden;">
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <label class="mt-2 pt-0 text-danger">Nature Of Collection*</label>
+            <input type="text" class="form-control rounded" placeholder="Select A Tax Type." />
+            <label class="mt-4 pt-0 text-danger">Tax Name*</label>
+            <input type="text" class="form-control rounded" placeholder="Search" />
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                 This is a Higher TCS Rate
+                </label>
+              </div>
+        </div>
+        <div class="col-lg-4">
+            <label class="mt-2 pt-0 text-danger">Rate (%)*</label>
+            <input type="text" class="form-control rounded" placeholder="Search" />
+        </div>
+    </div>
+    <div class="fixed-bottom bg-light text-center">
+        <button class="btn btn1 bg-success mt-2  text-white  fs-6 ms-5 mx-1 text-dark" (click)="submit()" type="button">
+            Save
+        </button>
+        <button class="btn btn2 last4 fs-6 ms-5 mt-2 ms-1 bg-secondary text-white " type="button"> CANCEL
+        </button>
+    </div>
+</form>

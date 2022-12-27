@@ -1,7 +1,6 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccountModule } from './account/account.module';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -11,25 +10,20 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AccountRoutingModule } from './account/account-routing.module';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TableComponent } from './table/table.component';
+import {MatIconModule} from '@angular/material/icon';
+import { ConfiguretermsComponent } from './configureterms/configureterms.component';
+import { ManagetcsComponent } from './managetcs/managetcs.component';
+import { HomeinvoiceComponent } from './homeinvoice/homeinvoice.component';
 import { MaterialsModule } from './materials/materials.module';
-import { CustomersComponent } from './customers/customers.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
-import { SeccomponentComponent } from './seccomponent/seccomponent.component';
-@NgModule({
-  declarations: [
-    AppComponent,
-    InvoiceComponent
-  ]
-})
-@NgModule({
-  declarations: [
-    AppComponent,
-    TableComponent,
-    CustomersComponent,
-    AddCustomerComponent,
-    SeccomponentComponent,
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
+@NgModule({
+  declarations: [
+    AppComponent,
+    InvoiceComponent,
+    ConfiguretermsComponent,
+    ManagetcsComponent,
+    HomeinvoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -38,11 +32,12 @@ import { SeccomponentComponent } from './seccomponent/seccomponent.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    MaterialsModule,
     AccountModule,
     AccountRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    MatIconModule,
+    MaterialsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
