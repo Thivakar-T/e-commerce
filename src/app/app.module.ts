@@ -1,19 +1,16 @@
-import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialsModule } from './materials/materials.module';
+import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitComponent } from './unit/unit.component';
 import { ItemsComponent } from './items/items.component';
-import { TableComponent } from './table/table.component';
-import { CustomersComponent } from './customers/customers.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
-import { SeccomponentComponent } from './seccomponent/seccomponent.component';
-import { HttpClientModule } from '@angular/common/http';
 import { TabComponent } from './tab/tab.component';
 import { ItemstableComponent } from './itemstable/itemstable.component';
 import { AccountRoutingModule } from './account/account-routing.module';
@@ -23,8 +20,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { ConfiguretermsComponent } from './configureterms/configureterms.component';
 import { ManagetcsComponent } from './managetcs/managetcs.component';
 import { HomeinvoiceComponent } from './homeinvoice/homeinvoice.component';
-import { MaterialsModule } from './materials/materials.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AccountModule } from './account/account.module';
+import { TableComponent } from './pages/table/table.component';
+import { CustomersComponent } from './pages/customers/customers.component';
+import { AddCustomerComponent } from './pages/add-customer/add-customer.component';
+import { SeccomponentComponent } from './pages/seccomponent/seccomponent.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SeccomponentComponent,
     TabComponent,
     ItemstableComponent,
+
     InvoiceComponent,
     ConfiguretermsComponent,
     ManagetcsComponent,
@@ -47,10 +49,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
+    MaterialsModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+
+    AccountModule,
     AccountRoutingModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -62,6 +69,5 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
