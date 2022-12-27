@@ -3,123 +3,139 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute, Route } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UnitService } from './unit.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 
-export interface PeriodicElement {
-  index:number,
-  Name:string,
-  status:string,
-  description:string
-
-  
+interface Animal {
+  name: string;
+  sound: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {index:1,Name:'Raj',status:'active',description:'dsfgh'},
-  {index:2,Name:'Sanajay',status:'active',description:'mugunthan'},
-  {index:3,Name:'Raj',status:'active',description:'dsfgh'},
-  {index:4,Name:'Raj',status:'active',description:'dsfgh'},
-  {index:5,Name:'Raj',status:'active',description:'dsfgh'},
-  {index:6,Name:'Raj',status:'active',description:'dsfgh'},
-  {index:7,Name:'Raj',status:'active',description:'dsfgh'},
-  {index:8,Name:'Raj',status:'active',description:'dsfgh'},
-];
 
 @Component({
   selector: 'app-unit',
   templateUrl: './unit.component.html',
   styleUrls: ['./unit.component.scss']
 })
-export class UnitComponent implements AfterViewInit,OnInit {
+export class UnitComponent implements OnInit {
 
-  groupform!: FormGroup;
-  public submitted = false;
-  paramId: any;
-  grouplist: any;
-  studentgrouplist:any
-  displayedColumns: string[] = ['index','Name','status','description', 'action'];
-  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  service: any;
+  unittype: any = [];
+  submitted = false;
+  error = '';
+  result: any;
+  id: any;
+  bedid: any;
+  editdata: any;
+  bedObj: any = {};
+  list: any = [];
+  acceptSubmitted = false;
+  master: any = [];
+  subject: any
+  unitform: FormGroup | any;
+  
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private modalService: NgbModal,
+    private service: UnitService,
+    private toaster:ToastrService
   ) {
-    this.groupform = this.fb.group({
-      id: [''],
-      Name: ['', Validators.required],
-      status:[''],
-      description: [''],
-    });
-   
+    this.bedid = this.route.snapshot.paramMap.get('id');
+    if (this.bedid != null) {
+      this.editBatch(this.list, this.subject);
+      this.acceptSubmitted = true;
+    }
   }
+  
+ 
 
   ngOnInit(): void {
-    // this.get()
+    this.unitform = this.formBuilder.group({
+      description: ['', Validators.required],
+      name: ['', Validators.required],
+      id: [''],
+    });
+    this.getunitList();
   }
 
-
-  ngAfterViewInit(): void {
-    this.dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-       this.dataSource.paginator = this.paginator;
+  openBooking(subject: any) {
+    this.modalService.open(subject);
   }
 
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  getunitList() {
+    this.service
+      .getByunit()
+      .subscribe(
+        (responce) => {
+          this.unittype = responce;
+          this.unittype = this.unittype.data;
+        });
+       
+        
   }
 
-  onsubmit() {
+  getunittype(model: any) {
+    if (this.bedObj.id) {
+      this.unitform.value.id = this.bedObj.id;
+    this.toaster.success("Edited Successful")
+      this.service.updatelist(this.unitform.value)
+        .subscribe(
+          (res) => {
+            this.result = res;
+            this.getunitList();
+            model.dismiss('Cross click');
+          });
+    }
+    else {
 
-    this.submitted = true;
-   
-    console.log(this.groupform.value);
-    this.service.Login(this.groupform.value).subscribe(
-        (response: any) => {
-          console.log(response);
-          localStorage.setItem('currentUser', JSON.stringify(response));
-          // localStorage.setItem('token', response.data.jwt);
-          // localStorage.setItem('role', response.data.role);
-        },
-        (error: any)=>{
-          console.log(error);
-  
-          
+      let  name=this.unitform.value.name
+      let description=this.unitform.value.description
+      if(name&&description){
+      this.submitted = true;
+      this.service.createunit(this.unitform.value).subscribe(
+        (responce) => {
+          this.result = responce;
+          model.dismiss('Cross click');
+          this.getunitList()
+          this.router.navigateByUrl('/pages/bed-type');
+          this.toaster.success("Your Data is Created")
         }
-      )
-    
-    // this.studentgroup.studentgroup(this.groupform.value).subscribe(
-    //   res => {
-    //     console.log(res)
-    //   })
-      
+        
+      );
+    }
+    else{
+      this.toaster.error("You must enter all values")
+
+    }
+   
+    }
   }
-  // get() {
-  //   this.studentgroup.getstudentgroup().subscribe(
-  //     res => {
-  //       console.log(res)
-  //       this.grouplist = res
-  //       this.studentgrouplist =this.grouplist.data
-  //       this.dataSource = new MatTableDataSource<any>(this.studentgrouplist);
-  //       this.dataSource.paginator = this.paginator;
 
-  //     })
-  // }
-  // reject(id:any){
-  //   alert("data is deleted")
-  //   this.studentgroup.deleteData(id).subscribe(
-  //     res => {
-  //       this.get()
-      
-  //     })
-    
-  // }
+  editBatch(master: any, subject: any) {
+    this.service
+      .editgetByunit(master.id).subscribe(
+        (res) => {
+          this.bedObj = res.data;
+        }
+      );
+    this.modalService.open(subject, { size: 'md' });
+  }
+
+  delete(id: any) {
+    if (confirm('Do you want romove data')) {
+      this.service.deleteData(id).subscribe(
+        (responce) => {
+          this.getunitList();
+          this.result = responce;
+        },
+      );
+    }
+    this.toaster.error("Deleted Successfully")
+  }
+ 
 }
-
-
 
 
 

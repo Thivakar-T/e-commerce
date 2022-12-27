@@ -1,0 +1,60 @@
+<div class="container mt-2">
+    <div class="row d-flex justify-content-between">
+        <div class="col-xl-6">
+            <div class="mt-4">
+                <p class="fw-bold fs-5 mb-4">Add Items</p>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="text-end mt-3 mb-4">
+                <span><button style="background-color: rgb(92,184,92);color: white;" class="btn "
+                       >
+                        Add
+                    </button></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" id="body">
+    <div class="table-wrapper">
+        <div class="table-title ">
+            <div >
+                <div class="col-sm-12">
+                    <h2>Manage</h2>
+                </div>
+               
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">S. No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Usage unit</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+          <tbody>
+            <tr *ngFor="let unit of unittype let i=index">
+                <td>{{i+1}} </td>
+                <td>{{unit.name}} </td>
+                <td>{{unit.description}} </td>
+                <td>{{unit.sellingprice}} </td>
+                <td>{{unit.unitId}} </td>
+                <td>
+                    <a routerLink='/items/{{unit.id}}' type="button" class="edit" data-toggle="modal"><i class="material-icons text-success"
+                            data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a (click)="delete(list.id)" class="delete" data-toggle="modal"><i class="material-icons"
+                            data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+            </tr>
+        
+            </tbody>
+        </table>
+       
+    </div>
+</div>

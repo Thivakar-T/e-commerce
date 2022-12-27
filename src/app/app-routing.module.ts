@@ -7,11 +7,19 @@ import { TableComponent } from './table/table.component';
 import { CustomersComponent } from './customers/customers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { SeccomponentComponent } from './seccomponent/seccomponent.component';
+import { TabComponent } from './tab/tab.component';
+import { ItemstableComponent } from './itemstable/itemstable.component';
+
 
 const routes: Routes = [
   {path:"",component:HeaderComponent},
   {path:"items",component:ItemsComponent},
   {path:"unit",component:UnitComponent},
+  {path:"unit/:data",component:UnitComponent},
+  {path:"tab",component:TabComponent},
+  {path:"itemstable",component:ItemstableComponent},
+  {path:"itemstable/:data",component:ItemstableComponent},
+
 
 
   

@@ -5,3 +5,11 @@
 .material-icons{
     font-family:'Material Icons'!important;
 }
+
+.modal {
+    // position: relative;
+    z-index: 9999 !important
+  }
+  .modal-backdrop {
+    z-index: 1071;
+  }

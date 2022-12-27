@@ -1,4 +1,3 @@
-
 <div class="container justify-content-center mt-3">
     <div class="shadow justify-content-md-center mx-2 mb-5  py-3 px-4 bg-body headercard ">
         <div class="row  mx-2 p-3 ">
@@ -6,67 +5,97 @@
                 <h4 class="my-auto headtextcolor"> <b>New Items</b></h4>
             </div>
         </div>
-        <form [formGroup]="form" >
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="row mt-3  mb-3 ">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="form-group">
                             <div class="row">
-                                <p class="col-form-label col-lg-3 pt-0">   Type<i class="fa fa-question-circle-o" ></i>
+                                <p class="col-form-label col-lg-3 pt-0"> Type
+
                                 </p>
+                                <input type="hidden" formControlName="id" [(ngModel)]="bedObj.id">
+
                                 <div class="col-lg-9">
-                                    <div class="form-check form-check-inline"  >
-                                        <input name="contact-sub-type" class="form-check-input" id="checkbox-round" type="checkbox"
-                                            value="business" (change)="checkpresent($event)" formControlName="goods"  >Goods
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" formControlName="type" 
+                                                 id="inlineRadio1" value="GOODS"
+                                                [checked]="true">
+                                            <label class="form-check-label" for="inlineRadio1">Goods</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input"  type="radio"
+                                                formControlName="type" id="inlineRadio2" value="SERVICE">
+                                            <label class="form-check-label" for="inlineRadio2">Service</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input name="contact-sub-type" id="af405ee57" type="checkbox" id="checkbox-round"class="form-check-input"
-                                            value="individual">Service
-                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row mt-3">
                     <div class="col-lg-8">
-                        <div class="form-group">
-                            <div class="row">
-                                <p class="col-form-label mt-2 col-lg-3 pt-0"><span class=" text-danger">
-                                    Name *</span></p>
-                                <div class="col-lg-9  d-flex ">
-                                    <div class="form me-5  w-100">
-                                        <input type="text" class="form-control" />
-                                    </div>
-                                </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <p class="mt-2 pt-0 text-danger"><span class=" text-danger">
+                                        Name *</span></p>
+                            </div>
+
+                            <div class="col-lg-9 col-sm-12 ">
+
+                                <input type="text" class="form-control" formControlName="name"  [(ngModel)]="bedObj.name"
+                                    [ngClass]="{ 'border-danger &&is-invalid': Submitted && f['name'].errors || f['name'].touched&& f['name'].errors} " />
+
+                                <span class="error"
+                                    *ngIf="Submitted &&f['name'].errors||f['name'].touched&& f['name'].errors"
+                                    class="error">Name is required
+                                </span>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-lg-8">
-                        <div class="form-group">
-                            <div class="row">
-                                <p class="col-form-label mt-2 col-lg-3 pt-0">Unit</p>
-                                <div class="col-lg-9  d-flex ">
-                                    <div class="form me-5  w-100">
-                                        <input type="text" class="form-control" />
-                                    </div>
-                                </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <p class="mt-2 pt-0 ">Unit</p>
+                            </div>
+                            <div class="col-lg-9 col-sm-12 ">
+                                <select class="form-select" aria-label="select unit" formControlName="unitId"  [(ngModel)]="bedObj.unitId"  >
+                                    <option selected></option>
+                                    <option *ngFor="let list of unittype " value="{{list.id}}">{{list.name}}</option>
+                                </select>
                             </div>
                         </div>
+
                     </div>
-                </div> 
+                </div>
+
                 <div class="row mt-3">
                     <div class="col-lg-8">
                         <div class="form-group">
                             <div class="row">
                                 <p class="col-form-label mt-2 col-lg-3 pt-0"> <span class=" underline text-danger">
-                                    Selling Price *</span></p>
-                                <div class="col-lg-8  d-flex  ">
+                                        Selling Price *</span></p>
+                                <div class="col-lg-9  d-flex  ">
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">INR</span></div> 
-                                        <input id="ember277" class="ember-text-field text-left ember-view form-control" type="text">
+                                        <div class="input-group-prepend"><span class="input-group-text">INR</span></div>
+                                        <input id="ember277" class="ember-text-field text-left ember-view form-control"
+                                            type="number" formControlName="sellingprice"  [(ngModel)]="bedObj.sellingprice"
+                                            [ngClass]="{ 'border-danger &&is-invalid': Submitted && f['sellingprice'].errors || f['sellingprice'].touched&& f['name'].errors} " /><br>
+
+                                        <span class="error"
+                                            *ngIf="Submitted &&f['sellingprice'].errors||f['sellingprice'].touched&& f['sellingprice'].errors"
+                                            class="error">Please enter the sellingprice of the item.
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -78,18 +107,20 @@
                         <div class="form-group">
                             <div class="row">
                                 <p class="col-form-label mt-2 col-lg-3 pt-0">Description</p>
-                                <div class="col-lg-8"><textarea id="ember278" class="ember-text-area ember-view form-control"></textarea></div>
+                                <div class="col-lg-8"><textarea id="ember278" formControlName="description"  [(ngModel)]="bedObj.description"
+                                        class="ember-text-area ember-view form-control"></textarea></div>
 
                             </div>
                         </div>
                     </div>
-                </div> 
-               
-            </div>
-             <div class="btn-toolbar mt-5 ">
-                    <button id="ember350" class="btn btn-success " type="submit"><!----> Save</button>&nbsp; <!----> 
-                    <button class="btn btn-secondary" data-ember-action="" data-ember-action-351="351">Cancel</button>
                 </div>
+
+            </div>
+          
+            <div class="btn-toolbar mt-5 ">
+                <button id="ember350" class="btn btn-success " type="submit"><!----> Save</button>&nbsp;
+                <button class="btn btn-secondary" data-ember-action="" data-ember-action-351="351">Cancel</button>
+            </div>
         </form>
     </div>
 </div>

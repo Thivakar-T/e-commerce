@@ -1,7 +1,6 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -18,6 +17,10 @@ import { MaterialsModule } from './materials/materials.module';
 import { CustomersComponent } from './customers/customers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { SeccomponentComponent } from './seccomponent/seccomponent.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TabComponent } from './tab/tab.component';
+import { ItemstableComponent } from './itemstable/itemstable.component';
+
 
 
 @NgModule({
@@ -25,14 +28,13 @@ import { SeccomponentComponent } from './seccomponent/seccomponent.component';
     AppComponent,
     UnitComponent,
     ItemsComponent,
-   
-
-
     AppComponent,
     TableComponent,
     CustomersComponent,
     AddCustomerComponent,
-    SeccomponentComponent
+    SeccomponentComponent,
+    TabComponent,
+    ItemstableComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,13 +47,9 @@ import { SeccomponentComponent } from './seccomponent/seccomponent.component';
     ReactiveFormsModule,
     FormsModule,
     AccountRoutingModule,
-    AccountModule
+    AccountModule,
+    HttpClientModule,
     
-
-    
-    
-
-  
   ],
   providers: [],
   bootstrap: [AppComponent],
