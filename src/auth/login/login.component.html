@@ -1,6 +1,6 @@
-<div class="container h-100 mt-5">
-    <div class="row h-100 justify-content-center align-items-center">
-        <form class="col-lg-10" style="background-color: white;">
+<div class="container h-100 ">
+    <div class="row h-100 justify-content-center align-items-center mt-5">
+        <div class="col-lg-8 mt-5" style="background-color: white;">
             <div class="AppForm shadow-lg">
                 <div class="row">
                     <div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -16,31 +16,29 @@
                                     formControlName="userName"
                                     [ngClass]="{ 'border-danger &&is-invalid': Submitted && f['userName'].errors || f['userName'].touched&& f['userName'].errors} " />
                                 <label
-                                    [ngClass]="{'text-danger && is-invalid':Submitted && f['userName'].errors|| f['userName'].touched&& f['userName'].errors}" >
+                                    [ngClass]="{'text-danger && is-invalid':Submitted && f['userName'].errors|| f['userName'].touched&& f['userName'].errors}">
                                     Username<span class="star">*</span></label>
                                 <span class="error"
                                     *ngIf="Submitted &&f['userName'].errors||f['userName'].touched&& f['userName'].errors"
                                     class="error">Username is required
                                 </span>
-                               
+
                             </div>
-
-
 
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
                                 <input id="password" type="password" placeholder="&nbsp;" autocomplete="off"
                                     formControlName="password"
                                     [ngClass]="{ 'border-danger &&is-invalid': Submitted && f['password'].errors || f['password'].touched&& f['password'].errors} " />
-                                    <label
-                                    [ngClass]="{'text-danger && is-invalid':Submitted && f['password'].errors|| f['password'].touched&& f['password'].errors}" >
+                                <label
+                                    [ngClass]="{'text-danger && is-invalid':Submitted && f['password'].errors|| f['password'].touched&& f['password'].errors}">
                                     Password<span class="star">*</span></label>
-                                    <span class="error"
+                                <span class="error"
                                     *ngIf="Submitted &&f['password'].errors||f['password'].touched&& f['password'].errors"
                                     class="error">Password is required
                                 </span>
-                                </div>
-                               
+                            </div>
+
                             <div class="wrapper">
                                 <input type="submit" value="Login" class="loginbtn">
                             </div>
@@ -56,7 +54,7 @@
                 </div>
             </div>
 
-        </form>
+        </div>
     </div>
 </div>
 

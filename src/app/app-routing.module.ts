@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TableComponent } from './table/table.component';
-import { CustomersComponent } from './customers/customers.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
-import { SeccomponentComponent } from './seccomponent/seccomponent.component';
-
+import { GuardGuard } from 'src/auth/guard';
 
 const routes: Routes = [
+
   {
     path: '',
     loadChildren: () => import('./../auth/auth.module').then(m => m.AuthModule)
+
   },
- 
-  {path:'Table',component:TableComponent},
-  {path:'Customer',component:CustomersComponent},
-  {path:'Add-Customer',component:AddCustomerComponent},
-  {path:'sec',component:SeccomponentComponent},
+  
+  {
+    path:'pages',
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),canActivate:[GuardGuard]
+  }
 ];
 
 @NgModule({
