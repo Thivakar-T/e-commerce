@@ -1,0 +1,40 @@
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1 ms-3 mb-2"><b>Configure Payment Terms</b></span>
+</nav>
+<form [formGroup]="configureform"  style="overflow-x: hidden;">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-6 col-md-6 col-xl-6 col-sm-6">
+            <table class="table table-responsive">
+                <thead style="border: none;">
+                    <tr>
+                        <th scope="col" class="text-danger text-center">S.No</th>
+                        <th scope="col" class="text-danger text-center">Terms Name*</th>
+                        <th scope="col" class="text-danger text-center">Number Of Days*</th>
+                        <th scope="col" class="text-danger text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let configure of configureList.controls;let i=index">
+                        <td>{{i+1}}</td>
+                        <td><input formControlName="term" value="" class=" form-control" type="text"></td>
+                        <td><input formControlName="day" value="" class="form-control " type="text"></td>
+                        <td>
+                            <mat-icon class="text-danger mt-1" (click)="delete(i)">delete</mat-icon>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <button class="bg-white btn-white text-primary border-0 ms-5" (click)="addItem()">+ Add New</button>
+        </div>
+    </div>
+   
+    <div class="fixed-bottom bg-light ">
+        <button class="btn btn1 bg-success mt-2  text-white  fs-6 ms-5 mx-1 text-dark" (click)="submit()" type="button">
+            Save
+        </button>
+        <button class="btn btn2 last4 fs-6 ms-5 mt-2 ms-1 bg-secondary text-white " type="button"> CANCEL
+        </button>
+    </div>
+   
+</form>

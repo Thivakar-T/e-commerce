@@ -1,0 +1,104 @@
+.body {
+overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+.inputMaterial {
+
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #949297;
+}
+
+.inputMaterial:focus {
+    outline: none;
+    border-bottom: 1px solid blue;
+}
+
+.input-icon {
+    background: #ddd;
+
+}
+
+.input-with-icon {
+    border: none;
+}
+
+.input-icon,
+.input-with-icon {
+    padding: 10px;
+}
+.line{
+    height: 1px;
+    margin-bottom: -1px;
+}
+.bx {
+    font-size: 36px;
+}
+.img1{
+    width: 60px;
+    height: 30px;
+}
+.save{
+    margin-left: 15%;
+}
+.body1{
+    background-color: #ffffff;
+}
+
+.form-control1{
+    width: 50%;
+}
+
+.form-control3 {
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width: 100%;
+}
+.form-control3:focus {
+    outline:none;
+}
+.card1{
+    border-radius: 10px;
+}
+.form-control4 {
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width: 100%;
+}
+.form-control4:focus {
+    outline:none;
+}
+.form-control5 {
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width: 100%;
+}
+.form-control5:focus {
+    outline:none;
+}
+.form-control6 {
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width: 100%;
+}
+.form-control6:focus {
+    outline:none;
+}
+@media (max-width: 425px) {
+    .subtotal{
+        visibility: visible;
+    }
+}
+@media (min-width: 425px) {
+    .subtotal1{
+        visibility: hidden;
+    }
+}

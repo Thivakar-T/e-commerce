@@ -1,0 +1,278 @@
+<div class="body">
+    <nav class="navbar navbar-light ">
+        <span class="navbar-brand mb-0 h1 ms-3"><i class="fa fa-file-text fs-3" aria-hidden="true"></i> <span
+                class="ms-2"><b>New Invoice</b></span> </span>
+    </nav>
+    <hr>
+    <div class="container-fluid justify-content-center mt-3">
+        <div class="body1 shadow justify-content-md-center mx-2 mb-5  py-3 px-4 b header1 ">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="row mt-3  mb-3 ">
+                    <div class="row mt-3 ">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3 ">
+                                    <label class="mt-2 pt-0 text-danger">Customer Name*</label>
+                                </div>
+                                <div class="col-lg-7 col-sm-12 d-flex">
+                                    <input type="search" class="form-control rounded" placeholder="Search"
+                                        aria-label="Search" aria-describedby="search-addon" />
+                                    <span class="input-group-text border-0 bg-primary" id="search-addon">
+                                        <i class="fas fa-search text-light"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="mt-2 pt-0 text-danger">Invoice#*</label>
+                                </div>
+                                <div class="col-lg-7 col-sm-12 ">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="mt-2 pt-0 ">Order Number</label>
+                                </div>
+                                <div class="col-lg-7 col-sm-12 ">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="mt-2 pt-0 text-danger">Invoice Date*</label>
+                                </div>
+                                <div class="col-lg-7 col-sm-12 ">
+                                    <input type="date" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="mt-2 pt-0 text-dark">Terms</label>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 mt-2">
+                                    <select class="form-select" (change)="navigate($event)">
+                                        <option value="">Due On Receipt</option>
+                                        <option *ngFor="let item of optionlist" value="{{item.option}}">{{item.option}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 d-flex mt-2">
+
+                                    <input type="text" placeholder="Due Date" class="form-control ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-3">
+                    <div class="row mt-3 ">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-3 ">
+                                    <label class="mt-2 pt-0 ">Subject<i class="fa fa-info-circle ms-2"
+                                            aria-hidden="true"></i></label>
+                                </div>
+                                <div class="col-lg-7 col-sm-12 d-flex">
+                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2"
+                                        cols="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-5">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col">
+                            <div class="text-end mb-0 float-end">
+                                <div><button type="button" class="btn btn-success btn-sm mt-3 mb-5" (click)="addItem()">
+                                        Order Material
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="1-body table-responsive" formArrayName="address">
+                            <table class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">ITEM DETAILS </th>
+                                        <th scope="col">QUANTITY </th>
+                                        <th scope="col">RATE </th>
+                                        <th scope="col">DISCOUNT </th>
+                                        <th scope="col">AMOUNT</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <tr *ngFor="let vendorwise of vendorWiseList.controls; let i=index"
+                                        [formGroupName]="i">
+                                        <td>{{i+1}}</td>
+                                        <td><input text="number" class="form-control" placeholder="Street"
+                                                formControlName="street" />
+                                        </td>
+                                        <td><input text="number" class="form-control" placeholder="City"
+                                                (change)="calculateTotal(vendorWiseList,i)" formControlName="city" />
+                                        </td>
+                                        <td><input text="number" class="form-control" placeholder="5%" readonly
+                                                formControlName="per" />
+                                        </td>
+                                        <td><input text="number" class="form-control" placeholder="Total"
+                                                formControlName="total" />
+                                        </td>
+
+                                        <td>
+                                            <mat-icon class="text-danger mt-1" (click)="delete(i)">delete</mat-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        {{amount}}
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <hr class="mt-3">
+                    <div class=" mt-1 ms-0 ">
+                        <div>
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-xl-6 col-sm-6">
+                                    <label class="mt-2 pt-0 ">Terms & Conditions<i class="fa fa-info-circle ms-2"
+                                            aria-hidden="true"></i></label>
+                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2"
+                                        cols="2"></textarea>
+                                </div>
+                                <div class="card mt-2 col-lg-4 ms-lg-5  col-md-6 col-sm-6 bg-light">
+                                    <div class="row">
+                                        <div class="col-xl-8 mt-2 col-sm-6  col-lg-8">
+                                            <label class=" text-secondary">Sub Total </label>
+                                            <select class="form-select mt-2" (change)="navigate($event)">
+                                                <option value="">Select a Tax</option>
+                                                <option *ngFor="let item of taxlist" value="{{item.tax}}">{{item.tax}}
+                                                </option>
+                                            </select>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"  >
+                                                <label class="form-check-label" for="inlineRadio1">TCS</label>
+                                              </div>
+                                              <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"  >
+                                                <label class="form-check-label" for="inlineRadio2">TDS</label>
+                                              </div>
+                                            <div class="d-flex mt-2">
+                                                <input type="text" style="width: 30%;"
+                                                    class="form-control mt-1 form-control1 rounded" aria-label="Search"
+                                                    aria-describedby="search-addon" />
+                                                <input type="text" style="width: 30%;"
+                                                    class="form-control mt-1 ms-1 form-control1 rounded"
+                                                    aria-label="Search" aria-describedby="search-addon" />
+                                            </div>
+                                            <label class="mt-2 text-dark  fs-6"> <b> Total </b>(<i class="fa fa-inr"
+                                                    aria-hidden="true"></i>)</label>
+                                        </div>
+                                        <div class="col-xl-4 col-sm-4 col-lg-4">
+
+                                            <input type="text" value="0.00" class="form-control6 mt-1 text-end  rounded"
+                                                readonly aria-describedby="search-addon" />
+                                            <input type="text" value="-0.00"
+                                                class="form-control3 mt-3 text-end  rounded" readonly
+                                                aria-describedby="search-addon" />
+                                            <input type="text" value="0.00"
+                                                class="form-control4 mt-5 form-control3  text-end  rounded" readonly
+                                                aria-describedby="search-addon" />
+                                            <input type="text" value="0.00" class="form-control6 mt-3 text-end  rounded"
+                                                readonly aria-describedby="search-addon" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="line mt-3 p-0">
+                    <div class="fill-container txn-bottom-form bg-light ">
+
+                        <div class="row seperator-col">
+                            <div class="col-lg-6 coll">
+                                <div class="form-group">
+                                    <div class="mb-2 mt-2">Terms &amp; Conditions</div>
+                                    <div><textarea rows="4"
+                                            placeholder="Enter the terms and conditions of your business to be displayed in your transaction"
+                                            class="ember-text-area ember-view form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 coll">
+                                <div id="ember196" class="form-group ember-view">
+                                    <label class="form-control-plaintext"></label>
+                                    <div class="font-xs ms-3 mt-4">Attach File(s) to Invoice</div>
+                                    <div>
+                                        <div id="ember197" class="dropdown ember-view btn-group mt-2">
+                                            <span class="btn btn-attachment file-upload">
+                                                <input multiple=""
+                                                    accept="image/gif,image/jpeg,image/png,image/bmp,application/pdf,application/doc, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/xml, text/csv, .xml, text/xml"
+                                                    id="ember198" class="upload ember-view" type="file">
+                                            </span>
+                                        </div>
+                                        <div class="mt-1">
+                                            <div>
+                                                <div>
+                                                    <small class="text-muted ms-3">
+                                                        You can upload a maximum of 3 files, 5MB each
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="d-flex">
+                            <p class="mt-3">Want to get paid faster? </p><img class="img1 mt-2"
+                                src="../../assets/new_image-removebg-preview (1).png" alt="">
+                        </div>
+                        <div>
+                            <p class="text-secondary">Configure payment gateways and receive payments online.</p>
+                        </div>
+                        <div class="mb-3"> </div>
+                    </div>
+                    <hr>
+                </div>
+                <p><span><b>Additional Fields:</b></span> <span class="text-secondary"><i>Start adding custom fields
+                            foryour invoices by going to Settings<i class="fa fa-arrow-right ms-2"
+                                aria-hidden="true"></i></i></span><span class="text-secondary">Preferences <i
+                            class="fa fa-arrow-right " aria-hidden="true"></i></span><span
+                        class="text-secondary">Invoices.</span> </p>
+                <div class="row mt-5 fixed-bottom bg-light">
+                    <div class="save col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3 mt-3">
+                        <button class="btn btn1 me-5 bg-light border-secondary text-dark fs-6 mx-1 text-dark "
+                            type="button"> Save as Draft
+                        </button>
+                        <button class="btn btn1 bg-success mt-2 text-white fs-6 me-5 mx-1 text-dark " type="button">
+                            Save and Send
+                        </button>
+                        <button class="btn btn2 last4 fs-6 me-5 mt-2 ms-1 bg-success text-white " type="button"> CANCEL
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
